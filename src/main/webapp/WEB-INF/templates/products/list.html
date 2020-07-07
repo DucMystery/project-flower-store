@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo Layout Trang Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <style>
+        header{
+            position: relative;
+        }
+        .shopping-mall{
+            margin-top: auto;
+            font-variant: small-caps;
+        }
+        .shopping-mall h1{
+            font-family: Impact;
+            font-size: 50px;
+            color: white;
+            letter-spacing: 0.3px;
+            text-shadow: 0 0 2px black;
+            padding-bottom:0px;
+            border-bottom: 1px dotted gray;
+            margin: 0px;
+            width: 49%;
+        }
+
+        .shopping-mall h5{
+            margin-top: 5px;
+            letter-spacing: 0.5px;
+            font-size: small;
+        }
+        .poly-cart{
+            margin-top: 5px;
+        }
+        .panel{
+            border: 1px solid #dddddd;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            border-radius: 4px;
+        }
+        .poly-cart ul{
+            margin: auto;
+            padding: 0px;
+            list-style: none;
+            font-variant: small-caps;
+        }
+        *{
+            box-sizing: border-box;
+        }
+        @import url(https://fonts.googleapis.com/css?family=Lato:700);
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f0f0f0;
+        }
+        .box {
+            position: relative;
+            max-width: 600px;
+            width: 90%;
+            height: 217px;
+            background: #fff;
+            box-shadow: 0 0 15px rgba(0,0,0,.1);
+        }
+
+        /* common */
+        .ribbon {
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
+            position: absolute;
+        }
+        .ribbon::before,
+        .ribbon::after {
+            position: absolute;
+            z-index: -1;
+            content: '';
+            display: block;
+            border: 1px solid #2980b9;
+        }
+        .ribbon span {
+            position: absolute;
+            display: block;
+            width: 225px;
+            padding: 15px 0;
+            background-color: coral;
+            box-shadow: 0 5px 10px rgba(0,0,0,.1);
+            color: #fff;
+            font: 700 18px/1 'Lato', sans-serif;
+            text-shadow: 0 1px 1px rgba(0,0,0,.2);
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+
+        /* top right*/
+        .ribbon-top-right {
+            top: -10px;
+            right: -10px;
+        }
+        .ribbon-top-right::before,
+        .ribbon-top-right::after {
+            border-top-color: transparent;
+            border-right-color: transparent;
+        }
+        .ribbon-top-right::before {
+            top: 0;
+            left: 0;
+        }
+        .ribbon-top-right::after {
+            bottom: 0;
+            right: 0;
+        }
+        .ribbon-top-right span {
+            left: -25px;
+            top: 30px;
+            transform: rotate(45deg);
+        }
+
+    </style>
+</head>
+<body>
+<div class="container" style="height: auto">
+    <header class="row">
+        <div class="col-sm-8 shopping-mall">
+            <h1>Online shopping mall</h1>
+            <h5>The center point of the professional programming</h5>
+        </div>
+        <img class="col-sm-4" src="https://demo.codegym.vn/web/15/layout-bootstrap/images/header-object.png" alt="Logo"/>
+    </header>
+
+
+    <nav class="navbar navbar-expand-lg navbar-primary bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-home"></i> Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-list-alt"></i> Giới thiệu</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="fas fa-phone"></i> Liên Hệ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fa fa-envelope"></i> Góp Ý</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fa fa-question"></i> Hỏi Đáp</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i> Tài Khoản
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+            </ul>
+            <ul class="navbar navbar-nav navbar-right">
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Register</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <div class="row">
+        <article class="col-sm-9">
+            <div class="row" style="margin: 5px 5px 5px 5px">
+                <th:block th:each="flower:${flowers}">
+                    <div class="col-sm-3 poly-prod box" style="border:1px solid black;text-align: center">
+                        <a th:href="@{/addToCart/{id}(id=*{flower.flower_id})}">
+                            <div class="ribbon ribbon-top-right"><span th:text="${flower.getDescription()}"></span></div>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <img th:src="'/fileImg/'+${flower.getImage()}" height="130" width="130"/>
+                                </div>
+                                <div class="panel-footer">
+                                    <p th:text="${flower.getName()}"></p>
+                                    <p><span th:text="${flower.getPrice()}"></span> <span>VND</span></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </th:block>
+            </div>
+        </article>
+
+        <article class="col-sm-3">
+            <div class="poly-cart">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <img src="https://demo.codegym.vn/web/15/layout-bootstrap/images/shoppingcart.gif"
+                             class="col-sm-6"/>
+                        <ul class="col-sm-6">
+                            <li>100 items</li>
+                            <li>$56.8</li>
+                            <li><a href="/showCart">Xem Giỏ Hàng</a> </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card card-default">
+                    <div class="card-body">
+                        <form>
+                            <input name="s" type="text" value="Keyword"/>
+                            <input type="submit" value="Search"/>
+                        </form>
+                    </div>
+                </div>
+                <div class="card-header">
+                    <i class="fas fa-th-list"></i>
+                    <strong>Chủng Loại</strong>
+                </div>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">Hoa Để Bàn</a>
+                    <a href="#" class="list-group-item">Hoa Đám Cưới</a>
+                    <a href="#" class="list-group-item">Hoa Theo Mùa </a>
+                    <a href="#" class="list-group-item">Hoa Ngày Tết</a>
+                    <a href="#" class="list-group-item">Hoa Tiệc</a>
+                </div>
+            </div>
+        </article>
+    </div>
+    </th:block>
+    <div>
+        <a th:href="@{'/flowers'(page=${flowers.number - 1})}" th:if="${flowers.hasPrevious()}">Previous</a>
+        <span th:text="${flowers.number + 1}"></span>/<span th:text="${flowers.totalPages}"></span>
+        <a th:href="@{'/flowers'(page=${flowers.number + 1})}" th:if="${flowers.hasNext()}">Next</a>
+    </div>
+    <footer class="card">
+        <div class="card-header text-center">
+            <p>CodeGym &copy; 2017</p>
+        </div>
+    </footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

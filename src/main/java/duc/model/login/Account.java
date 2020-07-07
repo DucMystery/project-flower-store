@@ -10,7 +10,7 @@ public class Account {
     private Long account_id;
 
     @Column(unique = true)
-    private String userName;
+    private String username;
     private String password;
 
     @ManyToOne
@@ -25,12 +25,12 @@ public class Account {
         return this;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public Account setUserName(String userName) {
-        this.userName = userName;
+    public Account setUsername(String username) {
+        this.username = username;
         return this;
     }
 

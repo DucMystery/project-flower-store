@@ -1198,113 +1198,167 @@
     <table id="307" parent="2" name="user">
       <Engine>MyISAM</Engine>
     </table>
-    <table id="308" parent="15" name="category">
+    <table id="308" parent="15" name="account">
       <Engine>MyISAM</Engine>
     </table>
-    <table id="309" parent="15" name="flower">
+    <table id="309" parent="15" name="category">
       <Engine>MyISAM</Engine>
     </table>
-    <column id="310" parent="307" name="id">
+    <table id="310" parent="15" name="flower">
+      <Engine>MyISAM</Engine>
+    </table>
+    <table id="311" parent="15" name="role">
+      <Engine>MyISAM</Engine>
+    </table>
+    <column id="312" parent="307" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="311" parent="307" name="age">
+    <column id="313" parent="307" name="age">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="312" parent="307" name="email">
+    <column id="314" parent="307" name="email">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="313" parent="307" name="firstName">
+    <column id="315" parent="307" name="firstName">
       <Position>4</Position>
       <DataType>varchar(45)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="314" parent="307" name="lastName">
+    <column id="316" parent="307" name="lastName">
       <Position>5</Position>
       <DataType>varchar(45)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="315" parent="307" name="phoneNumber">
+    <column id="317" parent="307" name="phoneNumber">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="316" parent="307" name="PRIMARY">
+    <key id="318" parent="307" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="317" parent="308" name="category_id">
+    <column id="319" parent="308" name="account_id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="318" parent="308" name="name">
+    <column id="320" parent="308" name="password">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="319" parent="308" name="PRIMARY">
+    <column id="321" parent="308" name="username">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="322" parent="308" name="role_role_id">
+      <Position>4</Position>
+      <DataType>bigint|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="323" parent="308" name="FKmf5x13ner5pyv33bqf62k0gr0">
+      <ColNames>role_role_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="324" parent="308" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>category_id</ColNames>
+      <ColNames>account_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="320" parent="309" name="flower_id">
+    <column id="325" parent="309" name="category_id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="321" parent="309" name="amount">
+    <column id="326" parent="309" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="327" parent="309" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>category_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="328" parent="310" name="flower_id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="329" parent="310" name="amount">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="322" parent="309" name="description">
+    <column id="330" parent="310" name="description">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="323" parent="309" name="image">
+    <column id="331" parent="310" name="image">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="324" parent="309" name="name">
+    <column id="332" parent="310" name="name">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="325" parent="309" name="price">
+    <column id="333" parent="310" name="price">
       <Position>6</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="326" parent="309" name="category_category_id">
+    <column id="334" parent="310" name="category_category_id">
       <Position>7</Position>
       <DataType>bigint|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="327" parent="309" name="FK7wwr5k1cuwj65n7bgo1o067l2">
+    <index id="335" parent="310" name="FK7wwr5k1cuwj65n7bgo1o067l2">
       <ColNames>category_category_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="328" parent="309" name="PRIMARY">
+    <key id="336" parent="310" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>flower_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="337" parent="311" name="role_id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="338" parent="311" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="339" parent="311" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>role_id</ColNames>
       <Primary>1</Primary>
     </key>
   </database-model>

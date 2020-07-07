@@ -1,7 +1,9 @@
 package duc;
 
+import duc.service.AccountService;
 import duc.service.CategoryService;
 import duc.service.FlowerService;
+import duc.service.Impl.AccountServiceImpl;
 import duc.service.Impl.CategoryServiceImpl;
 import duc.service.Impl.FlowerServiceImpl;
 import org.springframework.beans.BeansException;
@@ -126,6 +128,9 @@ public class AppConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         // Image resource.
         registry.addResourceHandler("/fileImg/**") //
                 .addResourceLocations("file:" + fileUpload);
+
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/css");
+
     }
 
     @Bean
@@ -136,5 +141,9 @@ public class AppConfig extends WebMvcConfigurerAdapter implements ApplicationCon
     @Bean
     public CategoryService categoryService(){
         return new CategoryServiceImpl();
+    }
+    @Bean
+    public AccountService accountService(){
+        return new AccountServiceImpl();
     }
 }

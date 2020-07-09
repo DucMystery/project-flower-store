@@ -169,10 +169,10 @@
             </ul>
             <ul class="navbar navbar-nav navbar-right">
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/logout}">Logout</a>
+                    <a class="nav-link" href="/login">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Language</a>
+                    <a class="nav-link" href="#">Register</a>
                 </li>
             </ul>
         </div>
@@ -183,22 +183,17 @@
     <div class="row">
         <article class="col-sm-9">
             <div class="row" style="margin: 5px 5px 5px 5px">
-                <th:block th:each="flower:${flowers}">
-                    <div class="col-sm-3 poly-prod box" style="border:1px solid black;text-align: center">
-                        <a th:href="@{/addToCart/{id}(id=*{flower.flower_id})}">
-                            <div class="ribbon ribbon-top-right"><span th:text="${flower.getDescription()}"></span></div>
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <img th:src="'/fileImg/'+${flower.getImage()}" height="130" width="130"/>
-                                </div>
-                                <div class="panel-footer">
-                                    <p th:text="${flower.getName()}"></p>
-                                    <p><span th:text="${flower.getPrice()}"></span> <span>VND</span></p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </th:block>
+                <table>
+                    <tr>
+                        <th><h3>Tổng tiền  :</h3></th>
+                        <td> <span th:text="${sum}"></span> VND </td>
+                    </tr>
+                    <tr>
+                        <th>Số lượng sản phẩm</th>
+                        <td><span th:text="${quantity}"></span>  Item</td>
+                    </tr>
+
+                </table>
             </div>
         </article>
 
@@ -209,8 +204,8 @@
                         <img src="https://demo.codegym.vn/web/15/layout-bootstrap/images/shoppingcart.gif"
                              class="col-sm-6"/>
                         <ul class="col-sm-6">
+                            <li>0 items</li>
                             <li></li>
-                            <li>$56.8</li>
                             <li><a href="/showCart">Xem Giỏ Hàng</a> </li>
                         </ul>
                     </div>
@@ -218,7 +213,7 @@
                 <div class="card card-default">
                     <div class="card-body">
                         <form>
-                            <input name="s" type="text" value="Keyword"/>
+                            <input name="searchCart" type="text" value="Keyword"/>
                             <input type="submit" value="Search"/>
                         </form>
                     </div>
@@ -238,11 +233,6 @@
         </article>
     </div>
     </th:block>
-    <div>
-        <a th:href="@{'/flowers'(page=${flowers.number - 1})}" th:if="${flowers.hasPrevious()}">Previous</a>
-        <span th:text="${flowers.number + 1}"></span>/<span th:text="${flowers.totalPages}"></span>
-        <a th:href="@{'/flowers'(page=${flowers.number + 1})}" th:if="${flowers.hasNext()}">Next</a>
-    </div>
     <footer class="card">
         <div class="card-header text-center">
             <p>CodeGym &copy; 2017</p>

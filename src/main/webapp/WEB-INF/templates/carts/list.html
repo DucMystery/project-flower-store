@@ -169,10 +169,10 @@
             </ul>
             <ul class="navbar navbar-nav navbar-right">
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/logout}">Logout</a>
+                    <a class="nav-link" href="/login">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Language</a>
+                    <a class="nav-link" href="#">Register</a>
                 </li>
             </ul>
         </div>
@@ -183,22 +183,36 @@
     <div class="row">
         <article class="col-sm-9">
             <div class="row" style="margin: 5px 5px 5px 5px">
-                <th:block th:each="flower:${flowers}">
-                    <div class="col-sm-3 poly-prod box" style="border:1px solid black;text-align: center">
-                        <a th:href="@{/addToCart/{id}(id=*{flower.flower_id})}">
-                            <div class="ribbon ribbon-top-right"><span th:text="${flower.getDescription()}"></span></div>
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <img th:src="'/fileImg/'+${flower.getImage()}" height="130" width="130"/>
-                                </div>
-                                <div class="panel-footer">
-                                    <p th:text="${flower.getName()}"></p>
-                                    <p><span th:text="${flower.getPrice()}"></span> <span>VND</span></p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </th:block>
+                    <form method="post" th:action="@{/updateCart}">
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Flower ID</th>
+                                <th>Flower Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <th:block th:each="item,itemStart :${cartItems}" th:name="cartItems">
+                                <tr>
+                                    <td th:text="${itemStart.count}"></td>
+                                    <td th:text="${item.flower.flower_id}"></td>
+                                    <td th:text="${item.flower.name}"></td>
+                                    <td th:text="${item.flower.price}"></td>
+                                    <td><input type="number" name="quantity" th:value="${item.quantity}"></td>
+                                    <td th:text="${item.total}"></td>
+                                </tr>
+                            </th:block>
+                            </tbody>
+                            <tr>
+                                <td colspan="3"><button>Update</button></td>
+                                <td colspan="3"><button formaction="/save">Payment</button></td>
+                            </tr>
+                        </table>
+                    </form>
             </div>
         </article>
 
@@ -209,8 +223,8 @@
                         <img src="https://demo.codegym.vn/web/15/layout-bootstrap/images/shoppingcart.gif"
                              class="col-sm-6"/>
                         <ul class="col-sm-6">
+                            <li><span th:text="${cartItems.size()}"></span> items</li>
                             <li></li>
-                            <li>$56.8</li>
                             <li><a href="/showCart">Xem Giỏ Hàng</a> </li>
                         </ul>
                     </div>
@@ -218,7 +232,7 @@
                 <div class="card card-default">
                     <div class="card-body">
                         <form>
-                            <input name="s" type="text" value="Keyword"/>
+                            <input name="searchCart" type="text" value="Keyword"/>
                             <input type="submit" value="Search"/>
                         </form>
                     </div>
@@ -238,11 +252,6 @@
         </article>
     </div>
     </th:block>
-    <div>
-        <a th:href="@{'/flowers'(page=${flowers.number - 1})}" th:if="${flowers.hasPrevious()}">Previous</a>
-        <span th:text="${flowers.number + 1}"></span>/<span th:text="${flowers.totalPages}"></span>
-        <a th:href="@{'/flowers'(page=${flowers.number + 1})}" th:if="${flowers.hasNext()}">Next</a>
-    </div>
     <footer class="card">
         <div class="card-header text-center">
             <p>CodeGym &copy; 2017</p>

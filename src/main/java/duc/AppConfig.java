@@ -1,11 +1,7 @@
 package duc;
 
-import duc.service.AccountService;
-import duc.service.CategoryService;
-import duc.service.FlowerService;
-import duc.service.Impl.AccountServiceImpl;
-import duc.service.Impl.CategoryServiceImpl;
-import duc.service.Impl.FlowerServiceImpl;
+import duc.service.*;
+import duc.service.Impl.*;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -145,5 +141,20 @@ public class AppConfig extends WebMvcConfigurerAdapter implements ApplicationCon
     @Bean
     public AccountService accountService(){
         return new AccountServiceImpl();
+    }
+
+    @Bean
+    public OrderService orderService(){
+        return new OrderServiceImpl();
+    }
+
+    @Bean
+    public CartService cartService(){
+        return new CartServiceImpl();
+    }
+
+    @Bean
+    public CartItemService cartItemService(){
+        return new CartItemServiceImpl();
     }
 }

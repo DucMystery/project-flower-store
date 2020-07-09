@@ -36,6 +36,7 @@ public class FlowerController {
     public ModelAndView showProducts(@RequestParam("s")Optional<String> s, @PageableDefault(size = 12)Pageable pageable){
         Page<Flower> flowers;
         if (s.isPresent()){
+            
             flowers=flowerService.findAllByNameContaining(s.get(),pageable);
         }else {
             flowers=flowerService.findAll(pageable);
